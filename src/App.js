@@ -8,9 +8,9 @@ function App() {
       <header className="App-header">
         <h1>React App</h1>
         <p>It is working</p>
-        <Person />
-        <Person />
-        <Person />
+        <Person name="Name1" age="10" />
+        <Person name="Name2" age="13" >My hobbies: Racing </Person>
+        <Person name="Name3" age="16" />
       </header>
     </div>
   );
