@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import  Person from './Person/Person'
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <header className="App-header">
         <h1>React App</h1>
         <p>It is working</p>
+        <Person/>
       </header>
     </div>
   );
