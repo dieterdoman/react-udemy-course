@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/Person'
-import Radium from "radium";
+import Radium, {StyleRoot} from "radium";
 
 class App extends Component {
     state = {
@@ -22,7 +22,7 @@ class App extends Component {
     nameChangedHandler = (event, id) => {
         const newName = event.target.value;
         const personIndex = this.state.persons.findIndex(p => {
-           return p.id === id
+            return p.id === id
         });
         const updatedPerson = {
             ...this.state.persons[personIndex]
@@ -58,11 +58,11 @@ class App extends Component {
                 <div>
                     {this.state.persons.map((person, index) => {
                         return <Person
-                                key={person.id}
-                                name={person.name}
-                                age={person.age}
-                                changed={(event) => this.nameChangedHandler(event, person.id)}
-                                click={() => this.deletePersonHandler(index)}/>
+                            key={person.id}
+                            name={person.name}
+                            age={person.age}
+                            changed={(event) => this.nameChangedHandler(event, person.id)}
+                            click={() => this.deletePersonHandler(index)}/>
                     })}
                 </div>
             );
@@ -75,23 +75,25 @@ class App extends Component {
         }
 
         const classes = [];
-        if(this.state.persons.length <= 2) {
+        if (this.state.persons.length <= 2) {
             classes.push('red');
         }
-        if(this.state.persons.length <= 1) {
+        if (this.state.persons.length <= 1) {
             classes.push('bold');
         }
 
         return (
-            <div className="App">
-                <h1>React App</h1>
-                <p className={classes.join(' ')}>It is working</p>
-                <button
-                    onClick={this.togglePersonsHandler}
-                    style={style}>Show Persons
-                </button>
-                {persons}
-            </div>
+            <StyleRoot>
+                <div className="App">
+                    <h1>React App</h1>
+                    <p className={classes.join(' ')}>It is working</p>
+                    <button
+                        onClick={this.togglePersonsHandler}
+                        style={style}>Show Persons
+                    </button>
+                    {persons}
+                </div>
+            </StyleRoot>
         );
     }
 }
