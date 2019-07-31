@@ -3,6 +3,7 @@ import styles from './App.module.css';
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import WithClass from "../hoc/WithClass";
+import AuthContext from '../context/auth-context'
 
 class App extends Component {
     state = {
@@ -48,14 +49,18 @@ class App extends Component {
         let persons = null;
         if (this.state.showPersons) {
             persons = (
-                <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.nameChangedHandler} isAuthenticated={this.state.authenticated}/>
+                <Persons persons={this.state.persons} clicked={this.deletePersonHandler}
+                         changed={this.nameChangedHandler}/>
             );
 
         }
         return (
             <WithClass classes={styles.App}>
-                <Cockpit persons={this.state.persons} showPersons={this.state.showPersons} clicked={this.togglePersonsHandler} title={this.props.appTitle} login={this.loginHandler}/>
-                {persons}
+                <AuthContext.Provider value={{authenticated: this.state.authenticated, login: this.loginHandler}}>
+                    <Cockpit persons={this.state.persons} showPersons={this.state.showPersons}
+                             clicked={this.togglePersonsHandler} title={this.props.appTitle}/>
+                    {persons}
+                </AuthContext.Provider>
             </WithClass>
         );
     }
