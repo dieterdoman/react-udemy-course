@@ -12,6 +12,7 @@ const Person = (props) => {
 
     return (
         <WithClass classes={styles.Person}>
+            {props.isAuthenticated === true ? <p>Authenticated</p> : <p>Please log in</p>}
             <p onClick={props.click}>I'm a {props.name} and I am {props.age} years old</p>
             <p>{props.children}</p>
             <input ref={inputFocusRef} type="text" onChange={props.changed} value={props.name}/>
@@ -23,7 +24,8 @@ Person.propTypes = {
     click: PropTypes.func,
     name: PropTypes.string,
     age: PropTypes.number,
-    changed: PropTypes.func
+    changed: PropTypes.func,
+    isAuthenticated: PropTypes.bool
 };
 
 export default Person;

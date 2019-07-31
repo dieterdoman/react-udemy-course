@@ -7,7 +7,8 @@ const Persons = (props) => props.persons.map((person, index) => {
             name={person.name}
             age={person.age}
             changed={(event) => props.changed(event, person.id)}
-            click={() => props.clicked(index)}/>
+            click={() => props.clicked(index)}
+            isAuthenticated={props.isAuthenticated}/>
     })
 ;
 
