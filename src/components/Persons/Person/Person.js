@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Person.module.css'
 import WithClass from "../../../hoc/WithClass";
+import PropTypes from 'prop-types';
 
 const person = (props) => {
     return (
@@ -10,6 +11,13 @@ const person = (props) => {
             <input type="text" onChange={props.changed} value={props.name}/>
         </WithClass>
     );
+};
+
+person.propTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
 };
 
 export default person;
